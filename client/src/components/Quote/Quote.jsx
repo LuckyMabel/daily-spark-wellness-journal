@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
-const Quote = ({ setQuote }) => {
-  const [quote, setLocalQuote] = useState("");
+const Quote = ({ quote, setQuote }) => {
   const [error, setError] = useState(false);
 
   const fetchQuote = async () => {
@@ -10,19 +9,14 @@ const Quote = ({ setQuote }) => {
       const response = await axios.get(
         `${import.meta.env.VITE_BASE_URL}/random-quote`
       );
-      setLocalQuote(response.data.content);
       setQuote(response.data.content);
     } catch (err) {
       setError(true);
     }
   };
 
-  useEffect(() => {
-    fetchQuote();
-  }, []);
-
   const handleChangeQuote = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent form submission
     fetchQuote();
   };
 

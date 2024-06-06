@@ -27,7 +27,7 @@ const AddEntry = () => {
 
   const handleQuoteChange = (newQuote) => {
     setQuote(newQuote);
-    setSubmitSuccess(false);
+    setSubmitSuccess(false); // Reset the success message state
   };
 
   return (
@@ -40,14 +40,12 @@ const AddEntry = () => {
           onChange={(e) => setContent(e.target.value)}
           placeholder="I am grateful for..."
         />
-        <Quote setQuote={handleQuoteChange} />
+        <Quote quote={quote} setQuote={handleQuoteChange} />
         <button type="submit">Submit</button>
       </form>
       {submitSuccess && (
         <div className="upload__success">
-          <p>
-            Upload success! You will be redirected to the list of entries page.
-          </p>
+          <p>Upload success!</p>
         </div>
       )}
     </div>

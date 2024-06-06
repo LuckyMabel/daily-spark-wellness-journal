@@ -44,7 +44,7 @@ const EditEntry = () => {
 
   const handleQuoteChange = (newQuote) => {
     setQuote(newQuote);
-    setSubmitSuccess(false);
+    setSubmitSuccess(false); // Reset the success message state
   };
 
   return (
@@ -59,14 +59,12 @@ const EditEntry = () => {
           onChange={(e) => setContent(e.target.value)}
           required
         />
-        <Quote setQuote={handleQuoteChange} />
+        <Quote quote={quote} setQuote={handleQuoteChange} />
         <button type="submit">Submit</button>
       </form>
       {submitSuccess && (
         <div className="upload__success">
-          <p>
-            Update success! You will be redirected to the list of entries page.
-          </p>
+          <p>Update success!</p>
         </div>
       )}
     </div>
