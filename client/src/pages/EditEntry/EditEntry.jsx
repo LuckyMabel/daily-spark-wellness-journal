@@ -26,6 +26,17 @@ const EditEntry = () => {
     fetchEntry();
   }, [id]);
 
+  const fetchNewQuote = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_BASE_URL}/random-quote`
+      );
+      setQuote(response.data.content);
+    } catch (err) {
+      console.error("Failed to fetch new quote:", err);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -42,11 +53,6 @@ const EditEntry = () => {
     }
   };
 
-  const handleQuoteChange = (newQuote) => {
-    setQuote(newQuote);
-    setSubmitSuccess(false); // Reset the success message state
-  };
-
   return (
     <div>
       <button onClick={() => navigate("/view-entries")}>
@@ -59,7 +65,11 @@ const EditEntry = () => {
           onChange={(e) => setContent(e.target.value)}
           required
         />
-        <Quote quote={quote} setQuote={handleQuoteChange} />
+        <Quote
+          initialQuote={quote}
+          setQuote={setQuote}
+          onFetchNewQuote={fetchNewQuote}
+        />
         <button type="submit">Submit</button>
       </form>
       {submitSuccess && (

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Quote from "../../components/Quote/Quote";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,32 @@ const AddEntry = () => {
   const [quote, setQuote] = useState("");
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchInitialQuote = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_BASE_URL}/random-quote`
+        );
+        setQuote(response.data.content);
+      } catch (err) {
+        console.error("Failed to fetch initial quote:", err);
+      }
+    };
+
+    fetchInitialQuote();
+  }, []);
+
+  const fetchNewQuote = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_BASE_URL}/random-quote`
+      );
+      setQuote(response.data.content);
+    } catch (err) {
+      console.error("Failed to fetch new quote:", err);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,11 +51,6 @@ const AddEntry = () => {
     }
   };
 
-  const handleQuoteChange = (newQuote) => {
-    setQuote(newQuote);
-    setSubmitSuccess(false); // Reset the success message state
-  };
-
   return (
     <div>
       <button onClick={() => navigate("/")}>Back to Home</button>
@@ -40,7 +61,11 @@ const AddEntry = () => {
           onChange={(e) => setContent(e.target.value)}
           placeholder="I am grateful for..."
         />
-        <Quote quote={quote} setQuote={handleQuoteChange} />
+        <Quote
+          initialQuote={quote}
+          setQuote={setQuote}
+          onFetchNewQuote={fetchNewQuote}
+        />
         <button type="submit">Submit</button>
       </form>
       {submitSuccess && (

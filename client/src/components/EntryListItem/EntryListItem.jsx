@@ -7,6 +7,9 @@ const EntryListItem = ({ entry, onDelete }) => (
     <p>
       <em>{entry.quote_of_the_day}</em>
     </p>
+    <p>
+      <small>{new Date(entry.timestamp).toLocaleString()}</small>
+    </p>
     <Link to={`/edit-entry/${entry.id}`}>Edit</Link>
     <button onClick={() => onDelete(entry.id)}>Delete</button>
   </li>
