@@ -13,11 +13,10 @@ const ViewEntries = () => {
         const response = await axios.get(
           `${import.meta.env.VITE_BASE_URL}/entries`
         );
-        setEntries(
-          response.data.sort(
-            (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
-          )
+        const sortedEntries = response.data.sort(
+          (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
         );
+        setEntries(sortedEntries);
       } catch (error) {
         console.error("Failed to fetch entries:", error);
       }

@@ -1,0 +1,14 @@
+.entry-list-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.entry-date {
+  width: 150px;
+  font-weight: bold;
+}
+
+.entry-content {
+  flex: 1;
+}
