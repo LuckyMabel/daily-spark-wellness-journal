@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Quote from "../../components/Quote/Quote";
 import { useNavigate } from "react-router-dom";
+import "./AddEntry.scss";
+import addEntry from "../../assets/images/add-entry.png";
+import bottom from "../../assets/images/bottom.png";
 
 const AddEntry = () => {
   const [content, setContent] = useState("");
@@ -43,36 +46,62 @@ const AddEntry = () => {
         quote_of_the_day: quote,
       });
       setSubmitSuccess(true);
-      setTimeout(() => {
-        navigate("/view-entries");
-      }, 3000);
+      // setTimeout(() => {
+      //   navigate("/view-entries");
+      // }, 3000);
     } catch (error) {
       console.error("Failed to add entry:", error);
     }
   };
 
   return (
-    <div>
-      <button onClick={() => navigate("/")}>Back to Home</button>
-      <h2>Add Entry</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="add-entry">
+      <button className="add-entry__back-button" onClick={() => navigate("/")}>
+        ❮
+      </button>
+      <div className="add-entry__header">
+        <img src={addEntry} alt="Add Entry" />
+        <h2 className="add-entry__title">Gratitude Prompt</h2>
+        <div className="add-entry__quote">
+          <p>{quote}</p>
+          <button className="add-entry__change-button" onClick={fetchNewQuote}>
+            Change
+          </button>
+        </div>
+      </div>
+      <form className="add-entry__form" onSubmit={handleSubmit}>
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          placeholder="I am grateful for..."
+          placeholder="I feel grateful for..."
+          className="add-entry__textarea"
+          required
         />
-        <Quote
-          initialQuote={quote}
-          setQuote={setQuote}
-          onFetchNewQuote={fetchNewQuote}
-        />
-        <button type="submit">Submit</button>
+        <div className="add-entry__buttons">
+          <button type="submit" className="add-entry__submit-button">
+            Submit
+          </button>
+          <button
+            type="button"
+            className="add-entry__cancel-button"
+            onClick={() => navigate("/")}
+          >
+            Cancel
+          </button>
+        </div>
       </form>
       {submitSuccess && (
-        <div className="upload__success">
-          <p>Upload success!</p>
+        <div className="submit__success">
+          <p>
+            Upload success! You will be redirected to the list of entries page.
+          </p>
         </div>
       )}
+      <div className="add-entry__bottom-decorations">
+        <img src={bottom} alt="Bottom Decoration" />
+        <img src={bottom} alt="Bottom Decoration" />
+        <img src={bottom} alt="Bottom Decoration" />
+      </div>
     </div>
   );
 };

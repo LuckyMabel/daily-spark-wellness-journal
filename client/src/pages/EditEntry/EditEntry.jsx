@@ -73,8 +73,10 @@ const EditEntry = () => {
         <button type="submit">Submit</button>
       </form>
       {submitSuccess && (
-        <div className="upload__success">
-          <p>Update success!</p>
+        <div className="submit__success">
+          <p>
+            Update success! You will be redirected to the list of entries page.
+          </p>
         </div>
       )}
     </div>
