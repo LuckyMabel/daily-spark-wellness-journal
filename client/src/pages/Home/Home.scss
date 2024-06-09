@@ -3,7 +3,7 @@
 @use "../../styles/partials/mixins" as *;
 
 .home {
-  background-color: #f1f2e1;
+  background-color: $beige;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -22,21 +22,21 @@
   }
 
   &__left-image {
-    left: -50%;
+    left: -100%;
   }
 
   &__right-image {
-    right: -50%;
+    right: -100%;
   }
 
   .slide-in-left {
-    transform: translateY(-50%) translateX(0);
+    transform: translateY(-50%) translateX(2%);
     opacity: 1;
     left: 0;
   }
 
   .slide-in-right {
-    transform: translateY(-50%) translateX(0);
+    transform: translateY(-50%) translateX(-2%);
     opacity: 1;
     right: 0;
   }
@@ -50,7 +50,7 @@
   }
 
   &__logo {
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
     height: 20rem;
   }
 
@@ -58,27 +58,27 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 1.25rem;
   }
 
   &__button {
-    background-color: #bdca9c;
+    background-color: $light-green;
     color: white;
     font-family: "Trend Sans", sans-serif;
     font-size: 1rem;
-    padding: 10px 20px;
+    padding: 0.625rem 1.25rem;
     border: none;
-    border-radius: 50px;
+    border-radius: 3.125rem;
     cursor: pointer;
     transition: background-color 0.3s;
 
     &:hover {
-      background-color: #aab986;
+      background-color: $mid-green;
     }
   }
 
   &__text {
-    color: #6e8972;
+    color: $dark-green;
     font-family: "Trend Sans", sans-serif;
     font-size: 0.9rem;
     width: 18rem;
