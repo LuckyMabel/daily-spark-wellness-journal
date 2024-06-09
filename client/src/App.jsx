@@ -7,14 +7,16 @@ import EditEntry from "./pages/EditEntry/EditEntry";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/add-entry" element={<AddEntry />} />
-        <Route path="/view-entries" element={<ViewEntries />} />
-        <Route path="/edit-entry/:id" element={<EditEntry />} />
-      </Routes>
-    </BrowserRouter>
+    <div className="app">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/add-entry" element={<AddEntry />} />
+          <Route path="/view-entries" element={<ViewEntries />} />
+          <Route path="/edit-entry/:id" element={<EditEntry />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 

@@ -1,0 +1,86 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+
+.home {
+  background-color: #f1f2e1;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+
+  &__left-image,
+  &__right-image {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 100%;
+    opacity: 0;
+    transition: transform 1s ease-out, opacity 1s ease-out;
+  }
+
+  &__left-image {
+    left: -50%;
+  }
+
+  &__right-image {
+    right: -50%;
+  }
+
+  .slide-in-left {
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
+    left: 0;
+  }
+
+  .slide-in-right {
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
+    right: 0;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__logo {
+    margin-bottom: 20px;
+    height: 20rem;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__button {
+    background-color: #bdca9c;
+    color: white;
+    font-family: "Trend Sans", sans-serif;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #aab986;
+    }
+  }
+
+  &__text {
+    color: #6e8972;
+    font-family: "Trend Sans", sans-serif;
+    font-size: 0.9rem;
+    width: 18rem;
+  }
+}
