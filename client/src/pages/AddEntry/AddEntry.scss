@@ -10,18 +10,18 @@
   align-items: center;
   position: relative;
   text-align: center;
-  padding: 20px;
+  padding: 1.25rem;
 
   &__back-button {
     position: absolute;
     top: 2rem;
     left: 2rem;
-    background-color: #638265;
+    background-color: $dark-green;
     color: white;
     border: none;
     border-radius: 50%;
-    width: 20px;
-    font-size: 24px;
+    width: 1.25rem;
+    font-size: 1.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,14 +41,14 @@
   }
 
   &__header {
-    margin-top: 20px;
+    margin-top: 1.25rem;
 
     img {
-      width: 300px;
+      width: 18.75rem;
       margin-bottom: -4rem;
 
       @include tablet {
-        width: 500px;
+        width: 31.25rem;
         margin-bottom: -8rem;
       }
     }
@@ -57,15 +57,15 @@
   &__title {
     font-family: "Trend Sans", sans-serif;
     font-size: 1.2rem;
-    color: #000;
-    margin-bottom: 10px;
+    color: $black;
+    margin-bottom: 0.625rem;
   }
 
   &__quote {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 0.625rem;
     width: 20rem;
 
     @include tablet {
@@ -74,7 +74,7 @@
 
     p {
       font-family: "Trend Sans", sans-serif;
-      color: #000;
+      color: $black;
       font-size: 0.66rem;
       margin: 0;
       text-align: left;
@@ -83,13 +83,13 @@
   }
 
   &__change-button {
-    background-color: #638265;
+    background-color: $dark-green;
     color: white;
     border: none;
-    border-radius: 50px;
-    padding: 10px 20px;
+    border-radius: 3.125rem;
+    padding: 0.625rem 1.25rem;
     font-family: "Trend Sans", sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
     cursor: pointer;
 
     &:hover {
@@ -98,20 +98,20 @@
   }
 
   &__form {
-    margin-top: 20px;
+    margin-top: 1.25rem;
     width: 100%;
   }
 
   &__textarea {
     width: 19.5rem;
-    height: 120px;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #f1f2e1;
+    height: 7.5rem;
+    padding: 0.625rem;
+    border-radius: 0.625rem;
+    background-color: $beige;
     border: none;
     font-family: "Trend Sans", sans-serif;
-    font-size: 12px;
-    margin-bottom: 15px;
+    font-size: 0.75rem;
+    margin-bottom: 0.938rem;
     resize: none;
 
     @include tablet {
@@ -121,7 +121,7 @@
 
   &__buttons {
     display: flex;
-    gap: 20px;
+    gap: 1.25rem;
     justify-content: center;
     margin-bottom: 7rem;
 
@@ -132,16 +132,16 @@
 
   &__submit-button,
   &__cancel-button {
-    padding: 10px 20px;
+    padding: 0.625rem 1.25rem;
     border: none;
-    border-radius: 50px;
+    border-radius: 3.125rem;
     font-family: "Trend Sans", sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
     cursor: pointer;
   }
 
   &__submit-button {
-    background-color: #638265;
+    background-color: $dark-green;
     color: white;
     width: 11.5rem;
 
@@ -155,7 +155,7 @@
   }
 
   &__cancel-button {
-    background-color: #e36a88;
+    background-color: $pink;
     color: white;
 
     &:hover {
@@ -186,10 +186,19 @@
 }
 
 .submit__success {
-  background: lightgreen;
+  background: $light-green;
   padding: 1.25rem;
   border-radius: 0.313rem;
   text-align: center;
-  width: 100%;
-  margin-top: 1rem;
+  opacity: 80%;
+  font-family: "Trend Sans", sans-serif;
+  font-size: 0.65rem;
+  margin-top: -18.5rem;
+  width: 17rem;
+
+  @include tablet {
+    margin-top: -20.5rem;
+    width: 29rem;
+    font-size: 0.6rem;
+  }
 }

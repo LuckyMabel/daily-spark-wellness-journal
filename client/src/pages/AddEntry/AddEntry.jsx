@@ -46,9 +46,9 @@ const AddEntry = () => {
         quote_of_the_day: quote,
       });
       setSubmitSuccess(true);
-      // setTimeout(() => {
-      //   navigate("/view-entries");
-      // }, 3000);
+      setTimeout(() => {
+        navigate("/view-entries");
+      }, 3000);
     } catch (error) {
       console.error("Failed to add entry:", error);
     }
