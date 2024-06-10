@@ -65,7 +65,7 @@ const EditEntry = () => {
         ❮
       </button>
       <div className="edit-entry__header">
-        <img src={editEntry} alt="Edit Entry" />
+        <img className="edit-entry__image" src={editEntry} alt="Edit Entry" />
       </div>
       <h2 className="edit-entry__title">Gratitude prompt</h2>
       <div className="edit-entry__quote">

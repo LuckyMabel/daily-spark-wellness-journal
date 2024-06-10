@@ -41,15 +41,15 @@
 
   &__header {
     margin-top: 1.25rem;
+  }
 
-    img {
-      width: 15rem;
-      margin-bottom: -3rem;
+  &__image {
+    width: 15rem;
+    margin-bottom: -3rem;
 
-      @include tablet {
-        width: 20rem;
-        margin-bottom: -4rem;
-      }
+    @include tablet {
+      width: 20rem;
+      margin-bottom: -4rem;
     }
   }
 
