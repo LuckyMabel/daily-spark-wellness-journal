@@ -1,0 +1,77 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+
+.view-entries {
+  background-color: white;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  &__back-button {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    background-color: $dark-green;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 1.25rem;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    @include tablet {
+      top: 4rem;
+      left: 4rem;
+    }
+
+    @include desktop {
+      top: 6rem;
+      left: 9rem;
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+
+  &__header {
+    margin-top: 1.25rem;
+
+    img {
+      width: 16rem;
+      margin-bottom: -4rem;
+
+      @include tablet {
+        width: 22rem;
+      }
+    }
+  }
+
+  &__table {
+    width: 100%;
+    max-width: 60rem;
+    border-collapse: collapse;
+    text-align: left;
+    margin: 1rem 0;
+
+    @include tablet {
+      width: 80%;
+    }
+
+    th,
+    td {
+      padding: 1rem 0.5rem;
+      border-bottom: 1px solid $light-green;
+    }
+
+    th {
+      font-family: "Trend Sans", sans-serif;
+      font-size: 1.2rem;
+      color: #000;
+    }
+  }
+}
