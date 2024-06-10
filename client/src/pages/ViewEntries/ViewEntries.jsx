@@ -7,6 +7,11 @@ import viewEntries from "../../assets/images/view-entries.png";
 
 const ViewEntries = () => {
   const [entries, setEntries] = useState([]);
+  const [filteredEntries, setFilteredEntries] = useState([]);
+  const [filterYear, setFilterYear] = useState("");
+  const [filterMonth, setFilterMonth] = useState("");
+  const [filterDay, setFilterDay] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,6 +24,7 @@ const ViewEntries = () => {
           (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
         );
         setEntries(sortedEntries);
+        setFilteredEntries(sortedEntries);
       } catch (error) {
         console.error("Failed to fetch entries:", error);
       }
@@ -30,10 +36,59 @@ const ViewEntries = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`${import.meta.env.VITE_BASE_URL}/entries/${id}`);
-      setEntries(entries.filter((entry) => entry.id !== id));
+      const updatedEntries = entries.filter((entry) => entry.id !== id);
+      setEntries(updatedEntries);
+      setFilteredEntries(updatedEntries.filter(filterByDate));
     } catch (error) {
       console.error("Failed to delete entry:", error);
     }
+  };
+
+  const handleYearChange = (e) => {
+    setFilterYear(e.target.value);
+    filterEntries(e.target.value, filterMonth, filterDay, searchQuery);
+  };
+
+  const handleMonthChange = (e) => {
+    setFilterMonth(e.target.value);
+    filterEntries(filterYear, e.target.value, filterDay, searchQuery);
+  };
+
+  const handleDayChange = (e) => {
+    setFilterDay(e.target.value);
+    filterEntries(filterYear, filterMonth, e.target.value, searchQuery);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+    filterEntries(filterYear, filterMonth, filterDay, e.target.value);
+  };
+
+  const filterEntries = (year, month, day, query) => {
+    let filtered = entries;
+
+    if (year) {
+      filtered = filtered.filter(
+        (entry) => new Date(entry.timestamp).getFullYear() === parseInt(year)
+      );
+    }
+    if (month) {
+      filtered = filtered.filter(
+        (entry) => new Date(entry.timestamp).getMonth() + 1 === parseInt(month)
+      );
+    }
+    if (day) {
+      filtered = filtered.filter(
+        (entry) => new Date(entry.timestamp).getDate() === parseInt(day)
+      );
+    }
+    if (query) {
+      filtered = filtered.filter((entry) =>
+        entry.content.toLowerCase().includes(query.toLowerCase())
+      );
+    }
+
+    setFilteredEntries(filtered);
   };
 
   return (
@@ -47,6 +102,55 @@ const ViewEntries = () => {
       <div className="view-entries__header">
         <img src={viewEntries} alt="View Entries" />
       </div>
+      <div className="view-entries__filters">
+        <input
+          type="text"
+          className="view-entries__search"
+          placeholder="Search entries..."
+          value={searchQuery}
+          onChange={handleSearchChange}
+        />
+        <select
+          className="view-entries__filter"
+          onChange={handleYearChange}
+          value={filterYear}
+        >
+          <option value="">Year</option>
+          {[
+            ...new Set(
+              entries.map((entry) => new Date(entry.timestamp).getFullYear())
+            ),
+          ].map((year) => (
+            <option key={year} value={year}>
+              {year}
+            </option>
+          ))}
+        </select>
+        <select
+          className="view-entries__filter"
+          onChange={handleMonthChange}
+          value={filterMonth}
+        >
+          <option value="">Month</option>
+          {[...Array(12).keys()].map((month) => (
+            <option key={month + 1} value={month + 1}>
+              {month + 1}
+            </option>
+          ))}
+        </select>
+        <select
+          className="view-entries__filter"
+          onChange={handleDayChange}
+          value={filterDay}
+        >
+          <option value="">Day</option>
+          {[...Array(31).keys()].map((day) => (
+            <option key={day + 1} value={day + 1}>
+              {day + 1}
+            </option>
+          ))}
+        </select>
+      </div>
       <table className="view-entries__table">
         <thead>
           <tr>
@@ -55,7 +159,7 @@ const ViewEntries = () => {
           </tr>
         </thead>
         <tbody>
-          {entries.map((entry) => (
+          {filteredEntries.map((entry) => (
             <EntryListItem
               key={entry.id}
               entry={entry}
