@@ -1,8 +1,202 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+
+.edit-entry {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  padding: 1.25rem;
+
+  &__back-button {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    background-color: $dark-green;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 1.25rem;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    @include tablet {
+      top: 4rem;
+      left: 4rem;
+    }
+
+    @include desktop {
+      top: 6rem;
+      left: 9rem;
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+
+  &__header {
+    margin-top: 1.25rem;
+
+    img {
+      width: 15rem;
+      margin-bottom: -3rem;
+
+      @include tablet {
+        width: 20rem;
+        margin-bottom: -4rem;
+      }
+    }
+  }
+
+  &__title {
+    font-family: "Trend Sans", sans-serif;
+    font-size: 1.2rem;
+    color: $black;
+    margin-bottom: 0.625rem;
+  }
+
+  &__quote {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    width: 20rem;
+
+    @include tablet {
+      width: 33rem;
+    }
+
+    p {
+      font-family: "Trend Sans", sans-serif;
+      color: $black;
+      font-size: 0.66rem;
+      margin: 0;
+      text-align: left;
+    }
+  }
+
+  &__change-button {
+    background-color: $dark-green;
+    color: white;
+    border: none;
+    border-radius: 3.125rem;
+    padding: 0.625rem 1.25rem;
+    font-family: "Trend Sans", sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #4f6b4c;
+    }
+  }
+
+  &__form {
+    margin-top: 1.25rem;
+    width: 100%;
+  }
+
+  &__textarea {
+    width: 19.5rem;
+    height: 7.5rem;
+    padding: 0.625rem;
+    border-radius: 0.625rem;
+    background-color: $beige;
+    border: none;
+    font-family: "Trend Sans", sans-serif;
+    font-size: 0.75rem;
+    margin-bottom: 0.938rem;
+    resize: none;
+
+    @include tablet {
+      width: 32rem;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 1.25rem;
+    justify-content: center;
+    margin-bottom: 7rem;
+
+    @include tablet {
+      margin-bottom: 10rem;
+    }
+  }
+
+  &__submit-button,
+  &__cancel-button {
+    padding: 0.625rem 1.25rem;
+    border: none;
+    border-radius: 3.125rem;
+    font-family: "Trend Sans", sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  &__submit-button {
+    background-color: $dark-green;
+    color: white;
+    width: 11.5rem;
+
+    @include tablet {
+      width: 24rem;
+    }
+
+    &:hover {
+      background-color: #4f6b4c;
+    }
+  }
+
+  &__cancel-button {
+    background-color: $pink;
+    color: white;
+
+    &:hover {
+      background-color: #c95a70;
+    }
+  }
+
+  &__bottom-decorations {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    position: fixed;
+    bottom: 0;
+
+    img {
+      width: 7rem;
+      height: auto;
+
+      @include tablet {
+        width: 15rem;
+      }
+
+      @include desktop {
+        width: 25rem;
+      }
+    }
+  }
+}
+
 .submit__success {
-  background: lightgreen;
+  background: $light-green;
   padding: 1.25rem;
   border-radius: 0.313rem;
   text-align: center;
-  width: 100%;
-  margin-top: 1rem;
+  opacity: 80%;
+  font-family: "Trend Sans", sans-serif;
+  font-size: 0.65rem;
+  margin-top: -18.5rem;
+  width: 17rem;
+
+  @include tablet {
+    margin-top: -20.5rem;
+    width: 29rem;
+    font-size: 0.6rem;
+  }
 }

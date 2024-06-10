@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import EntryListItem from "../../components/EntryListItem/EntryListItem";
 import "./ViewEntries.scss";
+import viewEntries from "../../assets/images/view-entries.png";
 
 const ViewEntries = () => {
   const [entries, setEntries] = useState([]);
@@ -44,7 +45,7 @@ const ViewEntries = () => {
         ❮
       </button>
       <div className="view-entries__header">
-        <img src="/src/assets/images/view-entries.png" alt="View Entries" />
+        <img src={viewEntries} alt="View Entries" />
       </div>
       <table className="view-entries__table">
         <thead>

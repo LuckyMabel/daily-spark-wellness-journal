@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Quote from "../../components/Quote/Quote";
 import { useNavigate, useParams } from "react-router-dom";
+import "./EditEntry.scss";
+import editEntry from "../../assets/images/edit-entry.png";
+import bottom from "../../assets/images/bottom.png";
 
 const EditEntry = () => {
   const { id } = useParams();
@@ -54,23 +57,42 @@ const EditEntry = () => {
   };
 
   return (
-    <div>
-      <button onClick={() => navigate("/view-entries")}>
-        Back to View Entries
+    <div className="edit-entry">
+      <button
+        onClick={() => navigate("/view-entries")}
+        className="edit-entry__back-button"
+      >
+        ❮
       </button>
-      <h2>Edit Entry</h2>
-      <form onSubmit={handleSubmit}>
+      <div className="edit-entry__header">
+        <img src={editEntry} alt="Edit Entry" />
+      </div>
+      <h2 className="edit-entry__title">Gratitude prompt</h2>
+      <div className="edit-entry__quote">
+        <p>{quote}</p>
+        <button className="edit-entry__change-button" onClick={fetchNewQuote}>
+          Change
+        </button>
+      </div>
+      <form onSubmit={handleSubmit} className="edit-entry__form">
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
+          className="edit-entry__textarea"
           required
         />
-        <Quote
-          initialQuote={quote}
-          setQuote={setQuote}
-          onFetchNewQuote={fetchNewQuote}
-        />
-        <button type="submit">Submit</button>
+        <div className="edit-entry__buttons">
+          <button type="submit" className="edit-entry__submit-button">
+            UPDATE
+          </button>
+          <button
+            type="button"
+            className="edit-entry__cancel-button"
+            onClick={() => navigate("/view-entries")}
+          >
+            CANCEL
+          </button>
+        </div>
       </form>
       {submitSuccess && (
         <div className="submit__success">
@@ -79,6 +101,11 @@ const EditEntry = () => {
           </p>
         </div>
       )}
+      <div className="edit-entry__bottom-decorations">
+        <img src={bottom} alt="Decoration" />
+        <img src={bottom} alt="Decoration" />
+        <img src={bottom} alt="Decoration" />
+      </div>
     </div>
   );
 };
