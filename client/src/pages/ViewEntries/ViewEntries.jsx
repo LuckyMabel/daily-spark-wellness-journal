@@ -102,7 +102,7 @@ const ViewEntries = () => {
       <div className="view-entries__header">
         <img src={viewEntries} alt="View Entries" />
       </div>
-      <div className="view-entries__filters">
+      <div className="view-entries__filters-container">
         <input
           type="text"
           className="view-entries__search"
@@ -110,46 +110,48 @@ const ViewEntries = () => {
           value={searchQuery}
           onChange={handleSearchChange}
         />
-        <select
-          className="view-entries__filter"
-          onChange={handleYearChange}
-          value={filterYear}
-        >
-          <option value="">Year</option>
-          {[
-            ...new Set(
-              entries.map((entry) => new Date(entry.timestamp).getFullYear())
-            ),
-          ].map((year) => (
-            <option key={year} value={year}>
-              {year}
-            </option>
-          ))}
-        </select>
-        <select
-          className="view-entries__filter"
-          onChange={handleMonthChange}
-          value={filterMonth}
-        >
-          <option value="">Month</option>
-          {[...Array(12).keys()].map((month) => (
-            <option key={month + 1} value={month + 1}>
-              {month + 1}
-            </option>
-          ))}
-        </select>
-        <select
-          className="view-entries__filter"
-          onChange={handleDayChange}
-          value={filterDay}
-        >
-          <option value="">Day</option>
-          {[...Array(31).keys()].map((day) => (
-            <option key={day + 1} value={day + 1}>
-              {day + 1}
-            </option>
-          ))}
-        </select>
+        <div className="view-entries__filters">
+          <select
+            className="view-entries__filter"
+            onChange={handleYearChange}
+            value={filterYear}
+          >
+            <option value="">Year</option>
+            {[
+              ...new Set(
+                entries.map((entry) => new Date(entry.timestamp).getFullYear())
+              ),
+            ].map((year) => (
+              <option key={year} value={year}>
+                {year}
+              </option>
+            ))}
+          </select>
+          <select
+            className="view-entries__filter"
+            onChange={handleMonthChange}
+            value={filterMonth}
+          >
+            <option value="">Month</option>
+            {[...Array(12).keys()].map((month) => (
+              <option key={month + 1} value={month + 1}>
+                {month + 1}
+              </option>
+            ))}
+          </select>
+          <select
+            className="view-entries__filter"
+            onChange={handleDayChange}
+            value={filterDay}
+          >
+            <option value="">Day</option>
+            {[...Array(31).keys()].map((day) => (
+              <option key={day + 1} value={day + 1}>
+                {day + 1}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
       <table className="view-entries__table">
         <thead>
