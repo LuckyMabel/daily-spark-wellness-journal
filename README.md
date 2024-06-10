@@ -1,14 +1,14 @@
 ## Project Installation
 clone mabel-zhou-daily-spark repo:
 - cd server
-- npm install
-- create a .env like the .env.sample 
-- npx knex migrate:latest
-- npm start
+  - npm install
+  - create a .env like the .env.sample 
+  - npx knex migrate:latest
+  - npm start
 
 - cd client
-- npm install
-- npm run dev
+  - npm install
+  - npm run dev
 
 # Project Title
 
