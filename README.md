@@ -4,6 +4,7 @@ clone mabel-zhou-daily-spark repo:
   - npm install
   - create a .env like the .env.sample 
   - npx knex migrate:latest
+  - npx knex seed:run
   - npm start
 
 - cd client
