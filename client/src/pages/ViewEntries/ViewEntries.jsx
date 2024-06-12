@@ -44,6 +44,24 @@ const ViewEntries = () => {
     }
   };
 
+  const filterByDate = (entry) => {
+    const entryDate = new Date(entry.timestamp);
+    const matchesYear = filterYear
+      ? entryDate.getFullYear() === parseInt(filterYear)
+      : true;
+    const matchesMonth = filterMonth
+      ? entryDate.getMonth() + 1 === parseInt(filterMonth)
+      : true;
+    const matchesDay = filterDay
+      ? entryDate.getDate() === parseInt(filterDay)
+      : true;
+    const matchesQuery = searchQuery
+      ? entry.content.toLowerCase().includes(searchQuery.toLowerCase())
+      : true;
+
+    return matchesYear && matchesMonth && matchesDay && matchesQuery;
+  };
+
   const handleYearChange = (e) => {
     setFilterYear(e.target.value);
     filterEntries(e.target.value, filterMonth, filterDay, searchQuery);
